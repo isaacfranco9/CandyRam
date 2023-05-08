@@ -1,3 +1,4 @@
+#Code to be called when reading from Accelerometer 
 import board
 import busio
 import adafruit_adxl34x
