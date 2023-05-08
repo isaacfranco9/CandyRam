@@ -1,0 +1,97 @@
+25 seconds to start executing code
+password: ASU2023
+
+Hostname = payload
+
+terminal open
+cd testing
+make sure to use "chmod u=rwx (filename)" when permission is denied
+
+cd .. = go back
+cd = change directory
+rmdir = remove
+ls
+
+
+
+enter configuration
+sudo raspi-config
+
+enter APRS config systems      145.127   [CURRENT CALLSIGN: KG5KGM]
+sudo nano direwolf.conf        438.800 
+
+view connected recording devices
+arecord -l
+lsusb
+
+COMPILING SHIT
+g++ [filename].cpp -o [filename] -lwiringPi -lpthread
+
+to run the executable
+./[filename]
+
+take picture
+libcamera-still -o [filename].jpg
+
+libcamera-hello               [TO TEST TO SEE IF ON]
+
+libcamera-jpeg -n -o $(date "+%d-%m-%y_%k:%M:%S").jpg    (gives day month year hour minute second and names picture as such)
+
+GPIO 5 (PHYSICAL 18) IS FUCKED
+
+-n turn off preview
+-gain set gain
+-s turn on signal mode
+
+
+
+NOTE: To compile programs with wiringPi, you need to add:
+    -lwiringPi
+  to your compile line(s) To use the Gertboard, MaxDetect, etc.
+  code (the devLib), you need to also add:
+    -lwiringPiDev
+  to your compile line(s).
+
+Receiving and logging packets [might need to format script similarly to accelerometer code]
+direwolf -T%T | tee dw.log
+
+running the code for accelerometer, send to txt file of choice and store in logbin folder,
+current script set to run every 4 seconds, ***find conditional to stop script once oriented***
+[CAN BE OPTIMIZED BUT "watch" WORKS SO FAR FOR DYNAMIC WRITING]
+repacc.sh ---->   python3 accelerometer.py >> logbin/(any).txt
+reprepacc.sh ---> watch -n 4 ./repacc.sh
+RUN SCRIPT WITH COMMAND
+./reprepacc
+NOTE: will need to find Zeroed xyz values once place into gimbal
+
+find testfile and rename it
+/usr/bin/convert /home/ramsandrockets/test.jpg -pointsize 175 -fill black -annotate +50+1900 $(date "+ %D_%T") /home/ramsandrockets/test.jpg
+
+
+sudo nano /lib/systemd/system/sample.service    [USING SYSTEMD TO RUN ON STARTUP, use this to edit]
+sudo systemctl daemon-reload           [TO RELOAD]
+sudo systemctl enable sample.service   [TO ENABLE]
+sudo systemctl disable sample.service  [TO DISABLE]   [CURRENTLY DISABLED FOR TESTING PERIOD - MARCH 23]
+sudo systemctl start sample.service    [TO TEST]
+sudo systemctl status sample.service   [TO TEST]
+
+CRONTAB CURRENTLY ENABLED
+
+[Sound card is working perfectly, retrieving audio, tested with direwolf]
+direwolf running [RUN OPEN AND CLOSE FILE CONSTANTLY FOR UPDATING FILES - possibly though loop]
+
+144.390 for troubleshooting, should recieve.             [ASK nasa IF RECIEVING IN COMMENTS]
+Transmitting with callsign [K5DCM] with permission from 
+
+current issue - reciever needs to be on board ND POWERFUL ENOUGH TO GRAB
+
+arecord --format=S16_LE --duration=5 --rate=16000 --file-type=raw sample.wav  [RECORD 5 SECONDS OF AUDIO]
+aplay --format=S16_LE --rate=16000 sample.wav                 [PLAY SAMPLE AUDIO]
+
+[TEST COMMAN LINE]
+0,1678926980,2023-03-16T00:36:20Z,K5DCM-11,K5DCM-11,30(7/6),1,=,K5DCM-11,\O,31.440833,-100.460500,,,,,,,APRSdroid Android App http://aprsdroid.org/,,, RR4RAM C3 A1 C3 D4 C3 F6 C3 F6 B2 C3 H8 A1 A1 C3 A1 A1 C3
+
+HARD CODE SAMPLE IF NEEDED 
+C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3
+
+146.940 [local club, monday night at 7]

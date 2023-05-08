@@ -1,0 +1,9 @@
+clearDire Wolf DEVELOPMENT version 1.7 E (Jan  2 2023)
+Includes optional support for:  cm108-ptt
+
+Reading config file direwolf.conf
+Audio device for both receive and transmit: plughw:1,0  (channel 0)
+Channel 0: 1200 baud, AFSK 1200 & 2200 Hz, A+, 44100 sample rate / 3.
+Note: PTT not configured for channel 0. (Ignore this if using VOX.)
+Ready to accept AGW client application 0 on port 8000 ...
+Ready to accept KISS TCP client application 0 on port 8001 ...
