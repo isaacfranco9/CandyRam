@@ -86,14 +86,10 @@ int main()
 	pinMode(yawPin, OUTPUT);
 	
 	// Start Direwolf
-	//cout << getTimestamp() << " Starting Direwolf...\n";
-	//system(("rm " + DIRELOG_FILENAME).c_str()); // Delete log to ensure we're not reading old data
-	//system(("touch " + DIRELOG_FILENAME).c_str()); // Recreate the log
-	//system(("sudo chmod 777 " + DIRELOG_FILENAME).c_str()); //ISAAC NEW
+	// ISAAC - Possible solutions if Systemd continues to fail
 	//system("./dw-start.sh"); //uncomment later if next line doesnt work
 	//system("lxterminal -e direwolf");
 	//system("direwolf");
-	//system("./recieve.sh")   //NEW, TEST LATER - ISAAC
 	
 	// Deploy the payload
 	cout << getTimestamp() << " Extending linear actuator...\n";
@@ -123,7 +119,7 @@ int main()
 	for (int c = 0; c < commandCount; c++)
 	{
 		string command;
-		command = transmission.substr(9 + c * 3, 2);//removed first 3
+		command = transmission.substr(9 + c * 3, 2); //ERROR LINE - This line caused the first 3 commands to be ignored
 		
 		cout << getTimestamp() << " Executing command " << command << "...\n";
 		executeCommand(command, yawPin, yawAngle);
@@ -416,7 +412,8 @@ string retrieveTransmission()
 	int comm = 0;
 	
 	system(("touch " + getDirewolfDate() + ".log").c_str());
-	
+	/*ERROR LINE - this line caused a file with no read, write permissions to be created, cannot log.
+	  "chmod" could have voided this error*/
 	while (receivedCallsign != CALLSIGN)
 	{
 		delay(TRANSMISSION_CHECK_DELAY);
@@ -453,7 +450,7 @@ string retrieveTransmission()
 		}
 		direlog.close();
 		
-		if (iteration >= 600)
+		if (iteration >= 600) //FAILSAFE - If transmission not receieved within 10 minutes, assume radio failure
 		{
 			return "C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3";
 		}
