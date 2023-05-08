@@ -1,7 +1,6 @@
-25 seconds to start executing code
-password: ASU2023
+Documentation, notes, and important terminal commands for testing
 
-Hostname = payload
+25 seconds to start executing code
 
 terminal open
 cd testing
@@ -24,7 +23,7 @@ view connected recording devices
 arecord -l
 lsusb
 
-COMPILING SHIT
+COMPILING THINGS
 g++ [filename].cpp -o [filename] -lwiringPi -lpthread
 
 to run the executable
@@ -71,7 +70,7 @@ find testfile and rename it
 sudo nano /lib/systemd/system/sample.service    [USING SYSTEMD TO RUN ON STARTUP, use this to edit]
 sudo systemctl daemon-reload           [TO RELOAD]
 sudo systemctl enable sample.service   [TO ENABLE]
-sudo systemctl disable sample.service  [TO DISABLE]   [CURRENTLY DISABLED FOR TESTING PERIOD - MARCH 23]
+sudo systemctl disable sample.service  [TO DISABLE]   [CURRENTLY ENABLED FOR FINAL LAUNCH]
 sudo systemctl start sample.service    [TO TEST]
 sudo systemctl status sample.service   [TO TEST]
 
