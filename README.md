@@ -1,7 +1,7 @@
 # ASU - CandyRam
 NASA University Student Launch - Rams and Rockets 2023 
 
-Here are all of the primary files (codes and executables) that were created within the RaspiOS operating system in order to operate the onboard camera for the Candy Ram.
+Here are all of the primary files (codes and executables) that were created within the RaspiOS operating system in order to operate the onboard payload system for Angelo State University's first entry into the the NASA USLI competition - the Candy Ram rocket.
 
 # The Premise
 The rocket was set to launch to a predicted height of about 5000 feet and descend with an altimeter-relay system activating about 600 feet off the ground. Once this relay activated and the primary chutes were deployed, the onboard Raspberry Pi Zero W would turn on. Upon activation, through the use of systemd, the operating system would run 2 programs; Direwolf (not included here) and PayloadHandler. Direwolf would run to receive any transmissions sent by NASA. Payload handler would deploy the linear actuators placed within the rocket and extend the camera payload out from the front of the nosecone, giving the camera enough clearance to have a view of the outside. Once these actuators were fully extended, a DC motor began running a scissor lift to elevate the camera out of the rocket, after which the code would invoke the accelerometer to gain a reading in order to determine the camera's orientation and subsequently attempt to right the camera through the use of servos mounted to its base. From here, the code would seek transmissions sent by NASA via APRS packets, parse these packets out, and run the commands sent, these commands being simple like turn right, left, take picture, apply filter, etc.
