@@ -1,3 +1,4 @@
+//Primary code to be run upon startup alongside Direwolf
 #include <iostream>
 #include <fstream>
 #include <string>
