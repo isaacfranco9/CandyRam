@@ -1,8 +1,8 @@
+//Testing
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <wiringPi.h>
-#include <string> //for good measure
 #include <cmath>
 #include <algorithm>
 #include <ctime>
