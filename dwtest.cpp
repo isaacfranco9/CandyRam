@@ -1,3 +1,4 @@
+//created to start direwolf check the file every second until a transmission with our callsign is found
 #include <iostream>
 #include <fstream>
 #include <string>
