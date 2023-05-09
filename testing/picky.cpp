@@ -1,4 +1,4 @@
-
+//console commands used to test camera and picture functions through imagemajick
 #include <iostream>
 #include <string>
 using namespace std;		
