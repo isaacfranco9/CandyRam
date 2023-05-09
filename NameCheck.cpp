@@ -1,4 +1,4 @@
-//Testing
+//Testing opening direwolf log as logname changes
 #include <iostream>
 #include <fstream>
 #include <string>
